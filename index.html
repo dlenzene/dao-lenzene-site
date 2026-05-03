@@ -1,81 +1,190 @@
-index.html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>DAO LENZENE - Rénovation & Art</title>
+  <title>DAO LENZENE - Artiste Peintre International</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DAO LENZENE - Contemporary artist & space creator. Art mural, rénovation artistique et créations internationales.">
+
+  <style>
+    body{margin:0;font-family:Arial;background:#0b0b0f;color:#fff;}
+
+    header{
+      text-align:center;
+      padding:40px 20px;
+      background:linear-gradient(145deg,#111,#1a1a1f);
+      border-bottom:1px solid #222;
+    }
+
+    .btn{
+      padding:10px 15px;
+      border-radius:8px;
+      text-decoration:none;
+      color:white;
+      display:inline-block;
+      margin:5px;
+      font-weight:bold;
+    }
+
+    .whatsapp{background:#25D366;}
+    .call{background:#444;}
+
+    .lang{
+      margin-top:10px;
+    }
+
+    .lang button{
+      margin:3px;
+      padding:6px 10px;
+      border-radius:20px;
+      border:none;
+      cursor:pointer;
+      background:#222;
+      color:#fff;
+    }
+
+    .section{padding:30px 20px;}
+
+    h2{margin-bottom:10px;}
+
+    p{color:#bbb;line-height:1.5;}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:10px;
+      margin-top:15px;
+    }
+
+    .card{
+      background:#1a1a22;
+      height:180px;
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:5px 10px;
+      background:#222;
+      border-radius:20px;
+      margin:3px;
+      font-size:12px;
+    }
+
+    .floating-call{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#fff;
+      color:#000;
+      padding:15px 18px;
+      border-radius:50px;
+      font-weight:bold;
+      text-decoration:none;
+      box-shadow:0 10px 25px rgba(0,0,0,0.4);
+      z-index:999;
+    }
+  </style>
 </head>
 
-<body style="margin:0; font-family:Arial; background:#f5f5f5; color:#222;">
+<body>
 
-  <!-- HEADER -->
-  <header style="text-align:center; padding:30px; background:white; border-bottom:1px solid #ddd;">
+<header>
+  <h1>DAO LENZENE</h1>
 
-    <div style="font-size:40px;">🏠🎨🛠️</div>
+  <p id="subtitle">Artiste Peintre & Créateur d’Espaces</p>
 
-    <h1 style="margin:10px 0;">DAO LENZENE</h1>
-    <h3 style="margin:0; color:#666;">Rénovation & Art</h3>
+  <div class="lang">
+    <button onclick="setLang('fr')">FR</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
 
-    <p style="margin-top:10px; font-size:18px;">
-      Des murs transformés en œuvres. Des chantiers réalisés avec précision.
-    </p>
+  <div>
+    <a class="btn call" href="tel:+33780536049">📞 Call</a>
+    <a class="btn whatsapp" href="https://wa.me/33780536049?text=Bonjour%20je%20souhaite%20un%20projet">💬 Contact</a>
+  </div>
+</header>
 
-    <!-- CONTACT BUTTONS -->
-    <div style="margin-top:20px;">
-      <a href="tel:+33780536049"
-         style="padding:10px 15px; background:#333; color:white; text-decoration:none; border-radius:6px;">
-        📞 Appeler
-      </a>
+<!-- MANIFESTO -->
+<section class="section">
+  <h2 id="h2-manifest">🧠 Manifeste</h2>
+  <p id="manifest">
+    Je transforme les surfaces en émotions visuelles.
+  </p>
+</section>
 
-      <a href="https://wa.me/33780536049?text=Bonjour%20je%20souhaite%20un%20devis"
-         style="padding:10px 15px; background:#25D366; color:white; text-decoration:none; border-radius:6px; margin-left:10px;">
-        💬 WhatsApp
-      </a>
-    </div>
+<!-- ART -->
+<section class="section">
+  <h2 id="h2-art">🎨 Œuvres</h2>
 
-  </header>
+  <div>
+    <span class="tag">Art mural</span>
+    <span class="tag">Fresques</span>
+    <span class="tag">Contemporain</span>
+  </div>
 
-  <!-- GALERIE -->
-  <section style="padding:30px;">
-    <h2>Mes réalisations</h2>
+  <div class="grid">
+    <div class="card"><img src="art1.jpg"></div>
+    <div class="card"><img src="art2.jpg"></div>
+  </div>
+</section>
 
-    <p>Ici tu peux ajouter tes photos de chantiers et œuvres artistiques.</p>
+<!-- PROJECTS -->
+<section class="section" style="background:#111;">
+  <h2 id="h2-projects">🏗️ Projets</h2>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px;">
-      <div style="height:150px; background:#ddd;"></div>
-      <div style="height:150px; background:#ddd;"></div>
-      <div style="height:150px; background:#ddd;"></div>
-    </div>
-  </section>
+  <div class="grid">
+    <div class="card"><img src="chantier1.jpg"></div>
+    <div class="card"><img src="chantier2.jpg"></div>
+  </div>
+</section>
 
-  <!-- AVANT / APRÈS -->
-  <section style="padding:30px; background:#eee;">
-    <h2>Avant / Après</h2>
+<!-- CONTACT -->
+<section class="section">
+  <h2 id="h2-contact">📩 Contact</h2>
+  <p id="contact-text">Projets artistiques et collaborations internationales.</p>
 
-    <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <div style="flex:1; min-width:200px; height:150px; background:#ccc;"></div>
-      <div style="flex:1; min-width:200px; height:150px; background:#bbb;"></div>
-    </div>
-  </section>
+  <a class="btn whatsapp" href="https://wa.me/33780536049">Demander un projet</a>
+</section>
 
-  <!-- DEVIS -->
-  <section style="padding:30px;">
-    <h2>Demande de devis rapide</h2>
+<a class="floating-call" href="tel:+33780536049">📞 Call</a>
 
-    <p>Contacte-moi directement :</p>
+<script>
+const content = {
+  fr: {
+    subtitle: "Artiste Peintre & Créateur d’Espaces",
+    manifest: "Je transforme les surfaces en émotions visuelles.",
+    art: "🎨 Œuvres",
+    projects: "🏗️ Projets",
+    contact: "📩 Contact",
+    contactText: "Projets artistiques et collaborations internationales."
+  },
+  en: {
+    subtitle: "Contemporary Artist & Space Creator",
+    manifest: "I transform surfaces into visual emotions.",
+    art: "🎨 Artworks",
+    projects: "🏗️ Projects",
+    contact: "📩 Contact",
+    contactText: "Artistic projects and international collaborations."
+  }
+};
 
-    <a href="https://wa.me/33780536049?text=Bonjour%20je%20souhaite%20un%20devis"
-       style="display:inline-block; padding:12px 18px; background:#25D366; color:white; text-decoration:none; border-radius:6px;">
-      💬 Demander un devis sur WhatsApp
-    </a>
-  </section>
-
-  <!-- FOOTER -->
-  <footer style="text-align:center; padding:20px; background:white; border-top:1px solid #ddd;">
-    <p>📞 +33 7 80 53 60 49</p>
-    <p>DAO LENZENE - Rénovation & Art</p>
-  </footer>
+function setLang(lang){
+  document.getElementById('subtitle').innerText = content[lang].subtitle;
+  document.getElementById('manifest').innerText = content[lang].manifest;
+  document.getElementById('h2-art').innerText = content[lang].art;
+  document.getElementById('h2-projects').innerText = content[lang].projects;
+  document.getElementById('h2-contact').innerText = content[lang].contact;
+  document.getElementById('contact-text').innerText = content[lang].contactText;
+}
+</script>
 
 </body>
 </html>
