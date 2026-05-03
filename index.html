@@ -66,17 +66,29 @@ p{
   border-radius:12px;
   overflow:hidden;
   cursor:pointer;
+  background:#111;
+  padding-bottom:10px;
 }
 
 .card img{
   width:100%;
-  height:100%;
+  height:300px;
   object-fit:cover;
   transition:0.4s;
 }
 
 .card:hover img{
   transform:scale(1.05);
+}
+
+.card h3{
+  margin:10px 10px 0;
+  font-size:18px;
+}
+
+.card p{
+  margin:5px 10px;
+  color:#aaa;
 }
 
 /* SECTIONS */
@@ -144,15 +156,30 @@ footer a:hover{
 
 </div>
 
-<!-- GALERIE -->
-<section class="grid">
+<!-- GALERIE FIREBASE (DYNAMIQUE) -->
+<section class="grid" id="gallery"></section>
 
-  <div class="card"><img src="art1.jpg" alt="art contemporain"></div>
-  <div class="card"><img src="art2.jpg" alt="peinture abstraite"></div>
-  <div class="card"><img src="art3.jpg" alt="galerie d'art"></div>
-  <div class="card"><img src="art4.jpg" alt="œuvre contemporaine"></div>
+<script>
+const dbURL = "https://firestore.googleapis.com/v1/projects/dao-lenzene-art/databases/(default)/documents/artworks";
 
-</section>
+fetch(dbURL)
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("gallery");
+
+  data.documents.forEach(doc => {
+    const d = doc.fields;
+
+    container.innerHTML += `
+      <div class="card">
+        <img src="${d.imageURL.stringValue}">
+        <h3>${d.title.stringValue}</h3>
+        <p>${d.price.stringValue}</p>
+      </div>
+    `;
+  });
+});
+</script>
 
 <!-- DROP -->
 <section class="section dark">
@@ -171,32 +198,13 @@ footer a:hover{
 
   <h2>Selected Artwork</h2>
 
-  <img src="art1.jpg" style="max-width:400px;border-radius:12px;margin:20px 0;">
-
   <p style="color:#aaa;max-width:500px;margin:auto;">
-    Original artwork — Unique piece created for collectors seeking exclusive visual impact.
+    Original artwork — Unique pieces created for collectors seeking exclusive visual impact.
   </p>
 
   <p style="color:#666;margin-top:10px;">
     Price on request (2000€ – 10 000€)
   </p>
-
-  <a class="btn" href="https://wa.me/33780536049?text=Je%20suis%20intéressé%20par%20une%20œuvre">
-    Request price
-  </a>
-
-</section>
-
-<!-- PRIVATE -->
-<section class="section dark">
-
-  <h2>Private Collection</h2>
-
-  <p>Exclusive artworks available on request only</p>
-
-  <a class="btn" href="https://wa.me/33780536049">
-    Request Artwork
-  </a>
 
 </section>
 
