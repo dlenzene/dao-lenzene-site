@@ -2,98 +2,80 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>DAO LENZENE | Artiste Contemporain</title>
+<title>DAO LENZENE | Contemporary Artist</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
-  background:#0b0b0f;
+  background:#0a0a0a;
   color:#fff;
-  overflow-x:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-/* 🔥 SCROLL INSTAGRAM STYLE */
-html{
-  scroll-snap-type:y mandatory;
-  scroll-behavior:smooth;
-}
-
-section{
-  scroll-snap-align:start;
-  min-height:100vh;
-  padding:60px 20px;
-  box-sizing:border-box;
-}
-
-/* HEADER */
-header{
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:80px 20px;
+  padding:20px;
 }
 
-h1{font-size:40px;margin:0;}
-p{color:#aaa;}
+h1{
+  font-size:60px;
+  margin:0;
+  letter-spacing:2px;
+}
 
-/* BUTTONS */
+p{
+  color:#888;
+  max-width:600px;
+}
+
+/* BUTTON */
 .btn{
-  padding:10px 15px;
-  border-radius:8px;
+  margin-top:20px;
+  padding:12px 18px;
+  border-radius:30px;
+  border:1px solid #333;
   text-decoration:none;
-  color:white;
+  color:#fff;
   display:inline-block;
-  margin:5px;
-  font-weight:bold;
 }
-
-.whatsapp{background:#25D366;}
-.call{background:#444;}
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:10px;
-  margin-top:20px;
+  padding:60px;
 }
 
 .card{
   border-radius:12px;
   overflow:hidden;
   cursor:pointer;
-  transition:0.3s;
 }
 
 .card img{
   width:100%;
-  height:220px;
-  object-fit:cover;
-  display:block;
-}
-
-.card:hover{
-  transform:scale(1.03);
-}
-
-/* LIGHTBOX (ZOOM IMAGE) */
-#lightbox{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
   height:100%;
-  background:rgba(0,0,0,0.95);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+  object-fit:cover;
+  transition:0.4s;
 }
 
-#lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
+.card:hover img{
+  transform:scale(1.05);
+}
+
+/* SECTION DROP */
+.drop{
+  text-align:center;
+  padding:100px 20px;
+  background:#111;
 }
 
 /* FLOAT BUTTON */
@@ -103,10 +85,9 @@ p{color:#aaa;}
   right:20px;
   background:#fff;
   color:#000;
-  padding:15px;
+  padding:14px 16px;
   border-radius:50px;
   font-weight:bold;
-  z-index:999;
   text-decoration:none;
 }
 </style>
@@ -114,76 +95,46 @@ p{color:#aaa;}
 
 <body>
 
-<!-- HEADER -->
-<header>
-<h1>DAO LENZENE</h1>
-<p>Artiste peintre contemporain • Galerie internationale</p>
+<!-- HERO -->
+<div class="hero">
+  <h1>DAO LENZENE</h1>
+  <p>Contemporary Artist • Private Collection • International Works</p>
 
-<a class="btn whatsapp" href="https://wa.me/33780536049?text=Je%20veux%20une%20œuvre">💬 DM Artiste</a>
-<a class="btn call" href="tel:+33780536049">📞 Appel</a>
-</header>
-
-<!-- MANIFESTE -->
-<section>
-<h2>🧠 Manifeste</h2>
-<p>Je transforme les surfaces en émotions visuelles.</p>
-</section>
+  <a class="btn" href="https://wa.me/33780536049?text=Je%20veux%20accéder%20à%20la%20collection">
+    Request Access
+  </a>
+</div>
 
 <!-- GALERIE -->
-<section>
-<h2>📸 Galerie d’Œuvres</h2>
-
-<div class="grid">
-
-<div class="card"><img src="art1.jpg" onclick="openImg(this.src)"></div>
-<div class="card"><img src="art2.jpg" onclick="openImg(this.src)"></div>
-<div class="card"><img src="art3.jpg" onclick="openImg(this.src)"></div>
-<div class="card"><img src="art4.jpg" onclick="openImg(this.src)"></div>
-
-</div>
+<section class="grid">
+  <div class="card"><img src="art1.jpg"></div>
+  <div class="card"><img src="art2.jpg"></div>
+  <div class="card"><img src="art3.jpg"></div>
+  <div class="card"><img src="art4.jpg"></div>
 </section>
 
 <!-- DROP -->
-<section>
-<h2>🔥 Drop Collection</h2>
-<p>Œuvres limitées • Pièces uniques</p>
+<section class="drop">
+  <h2>DROP COLLECTION</h2>
+  <p>Limited artworks • Private access only</p>
 
-<div class="grid">
-
-<div class="card"><img src="art1.jpg" onclick="openImg(this.src)"></div>
-<div class="card"><img src="art2.jpg" onclick="openImg(this.src)"></div>
-
-</div>
-
-<a class="btn whatsapp" href="https://wa.me/33780536049?text=Je%20veux%20le%20drop">Accéder au drop</a>
+  <a class="btn" href="https://wa.me/33780536049?text=Drop%20access">
+    Enter Drop
+  </a>
 </section>
 
 <!-- PREMIUM -->
-<section>
-<h2>💎 Œuvres Premium</h2>
-<p>Collection privée sur demande</p>
+<section class="drop">
+  <h2>Private Works</h2>
+  <p>Exclusive artworks available on request</p>
 
-<a class="btn whatsapp" href="https://wa.me/33780536049?text=Je%20veux%20une%20œuvre%20premium">Demander une œuvre</a>
+  <a class="btn" href="https://wa.me/33780536049">
+    Request Artwork
+  </a>
 </section>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeImg()">
-<img id="lightbox-img">
-</div>
-
-<!-- FLOAT BUTTON -->
-<a class="float" href="https://wa.me/33780536049">💬 DM</a>
-
-<script>
-function openImg(src){
-  document.getElementById('lightbox').style.display='flex';
-  document.getElementById('lightbox-img').src=src;
-}
-
-function closeImg(){
-  document.getElementById('lightbox').style.display='none';
-}
-</script>
+<!-- FLOAT -->
+<a class="float" href="https://wa.me/33780536049">DM</a>
 
 </body>
 </html>
