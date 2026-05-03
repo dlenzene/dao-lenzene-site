@@ -65,7 +65,6 @@ p{
 .card{
   border-radius:12px;
   overflow:hidden;
-  cursor:pointer;
   background:#111;
   padding-bottom:10px;
 }
@@ -74,20 +73,15 @@ p{
   width:100%;
   height:300px;
   object-fit:cover;
-  transition:0.4s;
-}
-
-.card:hover img{
-  transform:scale(1.05);
 }
 
 .card h3{
-  margin:10px 10px 0;
+  margin:10px;
   font-size:18px;
 }
 
 .card p{
-  margin:5px 10px;
+  margin:0 10px 10px;
   color:#aaa;
 }
 
@@ -146,9 +140,7 @@ footer a:hover{
 
   <h1>DAO LENZENE</h1>
 
-  <p>
-    Contemporary Artist • Private Collection • International Works
-  </p>
+  <p>Contemporary Artist • Private Collection • International Works</p>
 
   <a class="btn" href="https://wa.me/33780536049?text=Je%20veux%20accéder%20à%20la%20collection">
     Request Access
@@ -156,29 +148,43 @@ footer a:hover{
 
 </div>
 
-<!-- GALERIE FIREBASE (DYNAMIQUE) -->
+<!-- GALERIE FIREBASE -->
 <section class="grid" id="gallery"></section>
 
 <script>
 const dbURL = "https://firestore.googleapis.com/v1/projects/dao-lenzene-art/databases/(default)/documents/artworks";
 
-fetch(dbURL)
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("gallery");
+async function loadArtworks() {
+  try {
+    const res = await fetch(dbURL);
+    const data = await res.json();
 
-  data.documents.forEach(doc => {
-    const d = doc.fields;
+    const container = document.getElementById("gallery");
 
-    container.innerHTML += `
-      <div class="card">
-        <img src="${d.imageURL.stringValue}">
-        <h3>${d.title.stringValue}</h3>
-        <p>${d.price.stringValue}</p>
-      </div>
-    `;
-  });
-});
+    if (!data.documents) return;
+
+    data.documents.forEach(doc => {
+      const d = doc.fields;
+
+      const title = d.title?.stringValue || "";
+      const price = d.price?.stringValue || "";
+      const image = d.imageURL?.stringValue || "";
+
+      container.innerHTML += `
+        <div class="card">
+          <img src="${image}">
+          <h3>${title}</h3>
+          <p>${price}</p>
+        </div>
+      `;
+    });
+
+  } catch (e) {
+    console.log("Firestore error", e);
+  }
+}
+
+loadArtworks();
 </script>
 
 <!-- DROP -->
@@ -199,11 +205,11 @@ fetch(dbURL)
   <h2>Selected Artwork</h2>
 
   <p style="color:#aaa;max-width:500px;margin:auto;">
-    Original artwork — Unique pieces created for collectors seeking exclusive visual impact.
+    Original artworks — Private collection for serious collectors.
   </p>
 
   <p style="color:#666;margin-top:10px;">
-    Price on request (2000€ – 10 000€)
+    Price range: 2000€ – 10 000€
   </p>
 
 </section>
